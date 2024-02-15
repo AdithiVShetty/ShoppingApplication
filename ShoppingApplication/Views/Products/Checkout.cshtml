@@ -1,0 +1,42 @@
+﻿@model ShoppingApplication.Models.Checkout
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+
+<table class="table">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var item in Model.CartItems)
+    {
+        <tr>
+            <td>@item.Product.Id</td>
+            <td>@item.Product.Name</td>
+            <td>@item.Quantity</td>
+            <td>@(item.Product.Price * item.Quantity)</td>
+        </tr>
+    }
+
+</table>
+<h4><strong>Total Amount: @Model.CartItems.Sum(item => item.Product.Price * item.Quantity)</strong></h4>
+<br />
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+
+        <h4><strong>Shipping Details:</strong></h4>
+        <h5><b>Name:</b> @Model.User.Name</h5>
+        <h5><b>Phone Number:</b> @Model.User.PhoneNumber</h5>
+        <h5><b>Address:</b> @Model.User.Address</h5>
+    </div>
+
+    <a href="@Url.Action("PlaceOrder", "Products")" class="btn btn-primary">Place Order</a>
+}

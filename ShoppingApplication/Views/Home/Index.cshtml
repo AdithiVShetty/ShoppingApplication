@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+</head>
+<body style="background: linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2)), url(Images/bg7.jpg); background-size: cover">
+    <div style=" text-align: center; height: 470px ">
+        <h1 style="color: white"><strong>Shopping App</strong> <i class="fas fa-shopping-cart"></i></h1>
+        <br/><br/>
+        <a href="@Url.Action("AdminLogin", "Admin")" class="btn" style="background-color: white; color: rgb(252 170 182); border: none">Admin</a>
+        <a href="@Url.Action("Login", "User")" class="btn" style="background-color: white; color: rgb(252 170 182); border: none">User</a>
+    </div>
+</body>

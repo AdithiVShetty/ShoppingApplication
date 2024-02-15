@@ -1,0 +1,25 @@
+﻿@model ShoppingApplication.Models.Product
+
+@{
+    ViewBag.Title = "AddNewProduct";
+}
+
+<h2>Add New Product</h2>
+
+@using (Html.BeginForm())
+{
+    <div style="display: grid; grid-template-rows: repeat(2, 60px)">
+        <div style="display: flex; flex-direction: column">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+        </div>
+        <div style="display: flex; flex-direction: column">
+            @Html.LabelFor(model => model.Price)
+            @Html.EditorFor(model => model.Price)
+        </div>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Save" class="btn btn-success" />
+    </div>
+}

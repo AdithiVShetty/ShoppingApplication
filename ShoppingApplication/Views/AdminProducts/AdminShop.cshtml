@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ShoppingApplication.Models.Product>
+
+@{
+    ViewBag.Title = "AdminShop";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+</head>
+<body style="background-color: rgba(255, 182, 193, 0.2)">
+    <h2>Product List</h2>
+    <br/>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-success"><i class="fas fa-home"></i> Home</a>
+    <br/><br/>
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <form method="post" action="@Url.Action("RemoveProduct", "AdminProducts")">
+                        @Html.Hidden("productId", product.Id)
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Remove</button>
+                    </form>
+                </td>
+            </tr>
+            
+        }
+    </table>
+    <br />
+    <a href="@Url.Action("AddNewProduct", "AdminProducts")" class="btn btn-primary"><i class="fas fa-plus"></i>  Add New Product</a>
+   
+</body>
